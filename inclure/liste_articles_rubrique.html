@@ -33,12 +33,12 @@
 						<//B_date_fin>
 					</div>
 					<hgroup>
-						<BOUCLE_empleador(MOTS) {id_article} {id_groupe IN 2,10} {gis} {0,1}>
+						<BOUCLE_empleador(GIS) {id_article} {0,1}>
 							<h1 class="job-location">
 								#TITRE - #VILLE, #PAYS
 							</h1>
 						</BOUCLE_empleador>
-						<h2 class="job-title"><a href="#URL_ARTICLE">#TITRE</a></h2>										
+						<h2 class="job-title"><a href="#URL_ARTICLE">#TITRE</a></h2>
 					</hgroup>
 					<div class="job-details">
 						[(#CHAPO|?{#CHAPO,#INTRODUCTION})]
