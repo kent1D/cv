@@ -9,9 +9,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// C
 	'cfg_lbl_test' => 'Test',
+	
 	// E
-	'empleo_anterior' => 'Emploi précédent',
-	'empleo_siguiente' => 'Emploi suivant',
+	'empleo_anterior' => 'Expérience précédente',
+	'empleo_siguiente' => 'Expérience suivante',
+	
+	// T
+	'titre_rubrique_experience' => 'Expérience',
+	'titre_rubrique_formation' => 'Formation',
+	'titre_rubrique_portfolio' => 'Portfolio',
+	'titre_rubrique_projets' => 'Projets'
 );
 
 ?>
