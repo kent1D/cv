@@ -1,31 +1,31 @@
 <BOUCLE_principale(ARTICLES){id_article}>
-			#FORMULAIRE_RECHERCHE
-	
-			[(#REM) Article suivant ]
-			<B_article_rubrique_suivant>
-			<div class="menu">
-				<h2><:cv:empleo_siguiente:></h2>
-				<ul>
-					[(#REM) para el criterio, ver http://contrib.spip.net/Criteres-precedent-et-suivant#forum442468]
-					<BOUCLE_article_rubrique_suivant(ARTICLES) {id_rubrique} {!id_article} {lang} {par num titre} {titre >= #TITRE*} {0,1}>
-					<li><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
-					</BOUCLE_article_rubrique_suivant>
-				</ul>
-			</div>
-			</B_article_rubrique_suivant>
-			[(#REM) Article precedent ]
-			<B_article_rubrique_precedent>
-			<div class="menu">
-				<h2><:cv:empleo_anterior:></h2>
-				<ul>
-					[(#REM) para el criterio, ver http://contrib.spip.net/Criteres-precedent-et-suivant#forum442468]
-					<BOUCLE_article_rubrique_precedent(ARTICLES) {id_rubrique} {!id_article} {lang} {!par num titre} {titre <= #TITRE*} {0,1}>
-					<li><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
-					</BOUCLE_article_rubrique_precedent>
-				</ul>
-			</div>
-			</B_article_rubrique_precedent>
+	#FORMULAIRE_RECHERCHE
 
-			[(#REM) Menu de navigation mots-cles ]
-			#MODELE{article_mots}
+	[(#REM) Article suivant ]
+	<B_article_rubrique_suivant>
+	<div class="menu">
+		<h2><:cv:empleo_siguiente:></h2>
+		<ul>
+			[(#REM) para el criterio, ver http://contrib.spip.net/Criteres-precedent-et-suivant#forum442468]
+			<BOUCLE_article_rubrique_suivant(ARTICLES) {id_rubrique} {!id_article} {lang} {par num titre} {titre >= #TITRE*} {0,1}>
+			<li><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
+			</BOUCLE_article_rubrique_suivant>
+		</ul>
+	</div>
+	</B_article_rubrique_suivant>
+	[(#REM) Article precedent ]
+	<B_article_rubrique_precedent>
+	<div class="menu">
+		<h2><:cv:empleo_anterior:></h2>
+		<ul>
+			[(#REM) para el criterio, ver http://contrib.spip.net/Criteres-precedent-et-suivant#forum442468]
+			<BOUCLE_article_rubrique_precedent(ARTICLES) {id_rubrique} {!id_article} {lang} {!par num titre} {titre <= #TITRE*} {0,1}>
+			<li><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
+			</BOUCLE_article_rubrique_precedent>
+		</ul>
+	</div>
+	</B_article_rubrique_precedent>
+
+	[(#REM) Menu de navigation mots-cles ]
+	#MODELE{article_mots}
 </BOUCLE_principale>

@@ -23,6 +23,7 @@
 	<traduire module="paquet-cv" reference="es" />
 
 	<necessite nom="agenda" compatibilite="[3.11.2;]" />
+	<necessite nom="compositions" compatibilite="[3.3.4;]" />
 	<necessite nom="gis" compatibilite="[4.1.14;]" />
 	<necessite nom="Z" compatibilite="[1.7;]" />
 
