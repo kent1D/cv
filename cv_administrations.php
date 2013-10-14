@@ -42,6 +42,25 @@ function cv_configuration_base(){
 	 * Activation des documents sur les articles
 	 */
 	ecrire_meta("documents_objets", implode(',',array('spip_articles')));
+	
+	/**
+	 * Configuration de GIS
+	 */
+	$config_gis = lire_config('gis',array());
+	if(!$config_gis['lat'] OR !$config_gis['lon']){
+		$config_gis['lat'] = '49';
+		$config_gis['lon'] = '15';
+	}
+	$config_gis['geocoder'] = 'on';
+	$config_gis['adresse'] = 'on';
+	$config_gis['zoom'] = '3';
+	$config_gis['gis_objets'] = array('spip_articles','spip_rubriques','spip_auteurs');
+	$config_gis['layer_defaut'] = 'openstreetmap_blackandwhite';
+	$config_gis['layers'] = array(
+								'openstreetmap_blackandwhite',
+								'mapquestopen_osm');
+
+	ecrire_meta('gis',serialize($config_gis),'oui');
 }
 
 function cv_creer_rubriques(){
