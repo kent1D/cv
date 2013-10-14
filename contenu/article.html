@@ -1,73 +1,73 @@
 <BOUCLE_principale(ARTICLES){id_article}>
-        <BOUCLE_parent(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}>
-        <a href="#URL_RUBRIQUE" class="seccion inverso">
-            #TITRE
-        </a>
-        </BOUCLE_parent>
+	<BOUCLE_parent(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}>
+		<a href="#URL_RUBRIQUE" class="seccion inverso">
+			#TITRE
+		</a>
+	</BOUCLE_parent>
 
-			<div class="cartouche">
-				[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
-				<h1 class="#EDIT{titre} surlignable">[(#LOGO_ARTICLE_RUBRIQUE|image_reduire{40,*}) ]#TITRE</h1>
-				[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
-				[(#REM) Inclure le modele des liens de traductions ]
-				#MODELE{article_traductions}
-			</div>
+	<div class="cartouche">
+		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+		<h1 class="#EDIT{titre} surlignable">[(#LOGO_ARTICLE_RUBRIQUE|image_reduire{40,*}) ]#TITRE</h1>
+		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+		[(#REM) Inclure le modele des liens de traductions ]
+		#MODELE{article_traductions}
+	</div>
 
-								<span class="date-ranges ligne clearfix">
-                                    <BOUCLE_date_debut(EVENEMENTS){id_article}{par date_debut}{0,1}>
-                                        [<time class="job-start" [datetime="(#DATE_DEBUT|date_iso)"]>[(#DATE_DEBUT|mois)]/(#DATE_DEBUT|annee)</time>]
-                                    </BOUCLE_date_debut>
-                                        [(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
-                                        <BOUCLE_traductions_debut(ARTICLES){traduction}{exclus}>
-                                            <BOUCLE_date_debut_trad(EVENEMENTS){id_article}{par date_debut}{0,1}>
-                                                [<time class="job-start" [datetime="(#DATE_DEBUT|date_iso)"]>[(#DATE_DEBUT|mois)/](#DATE_DEBUT|annee)</time>]
-                                            </BOUCLE_date_debut_trad>
-                                        </BOUCLE_traductions_debut>
-                                    <//B_date_debut>
+	<span class="date-ranges ligne clearfix">
+		<BOUCLE_date_debut(EVENEMENTS){id_article}{par date_debut}{0,1}>
+			[<time class="job-start" [datetime="(#DATE_DEBUT|date_iso)"]>[(#DATE_DEBUT|mois)]/(#DATE_DEBUT|annee)</time>]
+		</BOUCLE_date_debut></B_date_debut>
+			[(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
+			<BOUCLE_traductions_debut(ARTICLES){traduction}{exclus}>
+				<BOUCLE_date_debut_trad(EVENEMENTS){id_article}{par date_debut}{0,1}>
+				[<time class="job-start" [datetime="(#DATE_DEBUT|date_iso)"]>[(#DATE_DEBUT|mois)/](#DATE_DEBUT|annee)</time>]
+				</BOUCLE_date_debut_trad>
+			</BOUCLE_traductions_debut>
+		<//B_date_debut>
 
-                                    <BOUCLE_date_fin(EVENEMENTS){id_article}{!par date_fin}{0,1}>
-                                        [<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]
-                                    </BOUCLE_date_fin>
-                                        [(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
-                                        <BOUCLE_traductions_fin(ARTICLES){traduction}{exclus}>
-                                            <BOUCLE_date_fin_trad(EVENEMENTS){id_article}{!par date_fin}{0,1}>
-                                                [<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]
-                                            </BOUCLE_date_fin_trad>
-                                        </BOUCLE_traductions_fin>
-                                    <//B_date_fin>
-                                </span>
+		<BOUCLE_date_fin(EVENEMENTS){id_article}{!par date_fin}{0,1}>
+			[<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]
+			</BOUCLE_date_fin></B_date_fin>
+			[(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
+			<BOUCLE_traductions_fin(ARTICLES){traduction}{exclus}>
+			<BOUCLE_date_fin_trad(EVENEMENTS){id_article}{!par date_fin}{0,1}>
+			[<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]
+			</BOUCLE_date_fin_trad>
+			</BOUCLE_traductions_fin>
+		<//B_date_fin>
+	</span>
 
-			[<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
+	[<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
 
-			<BOUCLE_empleador(MOTS) {id_article} {id_groupe = 2} {gis} {0,1}>
-			<div class="employeur">
-				<a class="inverso" href="#URL_MOT">#TITRE - #VILLE, #PAYS</a>
-				[(#INCLURE{fond=modeles/carte_gis, objets=mots, id_mot=#ID_MOT, lat=#LAT, lon=#LON, zoom=5, autocenterandzoom='',height=200px, width=100%, scale=oui, fullscreen=oui})]
-			</div>
-			</BOUCLE_empleador>
+	<BOUCLE_empleador(MOTS) {id_article} {id_groupe = 2} {gis} {0,1}>
+		<div class="employeur">
+			<a class="inverso" href="#URL_MOT">#TITRE - #VILLE, #PAYS</a>
+			[(#INCLURE{fond=modeles/carte_gis, objets=mots, id_mot=#ID_MOT, lat=#LAT, lon=#LON, zoom=5, autocenterandzoom='',height=200px, width=100%, scale=oui, fullscreen=oui})]
+		</div>
+	</BOUCLE_empleador>
 
-			[<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,*})</div>]
+	[<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,*})</div>]
 
-			<B_groupes_mots_competences>
-			<div class="competences">
-				<ul>
+	<B_groupes_mots_competences>
+		<div class="competences">
+			<ul>
 				<BOUCLE_groupes_mots_competences(GROUPES_MOTS) {id_groupe IN 4,1,6,8,3,5,7,9}>
-					<B_mots_competences>
-					<li>#TITRE
-						<ul class="tags clearfix">
+				<B_mots_competences>
+				<li>#TITRE
+					<ul class="tags clearfix">
 					<BOUCLE_mots_competences(MOTS) {id_groupe} {id_article}>
-							<li><a href="#URL_MOT">#TITRE</a></li>
+						<li><a href="#URL_MOT">#TITRE</a></li>
 					</BOUCLE_mots_competences>
-						</ul>
-					</li>
-					</B_mots_competences>
+					</ul>
+				</li>
+				</B_mots_competences>
 				</BOUCLE_groupes_mots_competences>
-				</ul>
-			</div>
-			</B_groupes_mots_competences>
+			</ul>
+		</div>
+	</B_groupes_mots_competences>
 
-			[(#REM) Gestion du portfolio et des documents ]
-			[(#INCLURE{fond=inclure/documents,id_article, env})]
+	[(#REM) Gestion du portfolio et des documents ]
+	[(#INCLURE{fond=inclure/documents,id_article, env})]
 	
-			[<div class="notes"><hr />(#NOTES)</div>]
+	[<div class="notes"><hr />(#NOTES)</div>]
 </BOUCLE_principale>

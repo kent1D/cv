@@ -1,52 +1,52 @@
 <BOUCLE_principale(AUTEURS){id_auteur}>
-			[(#REM) Rubriques de l'auteur ]
-			<B_rubriques>
-			<div class="rubrique_cv">
-				<BOUCLE_rubriques(RUBRIQUES) {par num titre}>
-					<B_articles>
-						#ANCRE_PAGINATION
-						<h1>#TITRE</h1>
-						<BOUCLE_articles(ARTICLES) {id_rubrique} {id_auteur} {lang} {!par num titre} {pagination 10}>
-							<article>
-								<div class="date-ranges">
-									<BOUCLE_date_debut(EVENEMENTS){id_article}{par date_debut}{0,1}>
-										[<time class="job-start" [datetime="(#DATE_DEBUT|date_iso)"]>[(#DATE_DEBUT|nom_mois{'abbr'})] (#DATE_DEBUT|annee)</time>]
-									</BOUCLE_date_debut>
-										[(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
-										<BOUCLE_traductions_debut(ARTICLES){traduction}{exclus}>
-											<BOUCLE_date_debut_trad(EVENEMENTS){id_article}{par date_debut}{0,1}>
-												[<time class="job-start" [datetime="(#DATE_DEBUT|date_iso)"]>[(#DATE_DEBUT|mois)/](#DATE_DEBUT|annee)</time>]
-											</BOUCLE_date_debut_trad>
-										</BOUCLE_traductions_debut>
-									<//B_date_debut>
+[(#REM) Rubriques de l'auteur ]
+<B_rubriques>
+<div class="rubrique_cv">
+	<BOUCLE_rubriques(RUBRIQUES) {par num titre}>
+		<B_articles>
+			#ANCRE_PAGINATION
+			<h1>#TITRE</h1>
+			<BOUCLE_articles(ARTICLES) {id_rubrique} {id_auteur} {lang} {!par num titre} {pagination 10}>
+				<article>
+					<div class="date-ranges">
+						<BOUCLE_date_debut(EVENEMENTS){id_article}{par date_debut}{0,1}>
+							[<time class="job-start" [datetime="(#DATE_DEBUT|date_iso)"]>[(#DATE_DEBUT|nom_mois{'abbr'})] (#DATE_DEBUT|annee)</time>]
+						</BOUCLE_date_debut>
+							[(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
+							<BOUCLE_traductions_debut(ARTICLES){traduction}{exclus}>
+								<BOUCLE_date_debut_trad(EVENEMENTS){id_article}{par date_debut}{0,1}>
+									[<time class="job-start" [datetime="(#DATE_DEBUT|date_iso)"]>[(#DATE_DEBUT|mois)/](#DATE_DEBUT|annee)</time>]
+								</BOUCLE_date_debut_trad>
+							</BOUCLE_traductions_debut>
+						<//B_date_debut>
 
-									<BOUCLE_date_fin(EVENEMENTS){id_article}{!par date_fin}{0,1}>
-										[<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|nom_mois{'abbr'})] (#DATE_FIN|annee)</time>]
-									</BOUCLE_date_fin>
-										[(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
-										<BOUCLE_traductions_fin(ARTICLES){traduction}{exclus}>
-											<BOUCLE_date_fin_trad(EVENEMENTS){id_article}{par date_fin}{0,1}>
-												[<time class="job-start" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]
-											</BOUCLE_date_fin_trad>
-										</BOUCLE_traductions_fin>
-									<//B_date_fin>
-								</div>
-								<hgroup>
-									<BOUCLE_empleador(MOTS) {id_article} {id_groupe = 2} {gis} {0,1}>
-										<h1 class="job-location">
-											#TITRE - #VILLE, #PAYS
-										</h1>
-									</BOUCLE_empleador>
-									<h2 class="job-title"><a href="#URL_ARTICLE">#TITRE</a></h2>										
-								</hgroup>
-								<div class="job-details">
-									[(#CHAPO|?{#CHAPO,#INTRODUCTION})]
-								</div>
-							</article>
-						</BOUCLE_articles>
-						[<p class="pagination">(#PAGINATION)</p>]
-					</B_articles>
-				</BOUCLE_rubriques>
-			</B_rubriques>
+						<BOUCLE_date_fin(EVENEMENTS){id_article}{!par date_fin}{0,1}>
+							[<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|nom_mois{'abbr'})] (#DATE_FIN|annee)</time>]
+						</BOUCLE_date_fin>
+							[(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
+							<BOUCLE_traductions_fin(ARTICLES){traduction}{exclus}>
+								<BOUCLE_date_fin_trad(EVENEMENTS){id_article}{par date_fin}{0,1}>
+									[<time class="job-start" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]
+								</BOUCLE_date_fin_trad>
+							</BOUCLE_traductions_fin>
+						<//B_date_fin>
+					</div>
+					<hgroup>
+						<BOUCLE_empleador(MOTS) {id_article} {id_groupe = 2} {gis} {0,1}>
+							<h1 class="job-location">
+								#TITRE - #VILLE, #PAYS
+							</h1>
+						</BOUCLE_empleador>
+						<h2 class="job-title"><a href="#URL_ARTICLE">#TITRE</a></h2>										
+					</hgroup>
+					<div class="job-details">
+						[(#CHAPO|?{#CHAPO,#INTRODUCTION})]
+					</div>
+				</article>
+			</BOUCLE_articles>
+			[<p class="pagination">(#PAGINATION)</p>]
+		</B_articles>
+	</BOUCLE_rubriques>
+</B_rubriques>
 
 </BOUCLE_principale>
