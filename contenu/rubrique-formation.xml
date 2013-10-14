@@ -1,0 +1,6 @@
+<composition>
+	<nom>Rubrique Formation</nom>
+	<description>Composition dédiée aux formations</description>
+	<branche type="article" composition="formation" />
+	<branche type="rubrique" composition="formation" />
+</composition>

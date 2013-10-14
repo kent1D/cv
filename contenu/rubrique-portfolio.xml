@@ -1,0 +1,6 @@
+<composition>
+	<nom>Rubrique Portfolio</nom>
+	<description>Composition dédiée au portofolio</description>
+	<branche type="article" composition="portfolio" />
+	<branche type="rubrique" composition="portfolio" />
+</composition>

@@ -1,0 +1,6 @@
+<composition>
+	<nom>Rubrique Expérience</nom>
+	<description>Composition dédiée aux expériences</description>
+	<branche type="article" composition="experience" />
+	<branche type="rubrique" composition="experience" />
+</composition>
