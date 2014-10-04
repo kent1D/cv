@@ -7,7 +7,7 @@
 			<a href="#URL_RUBRIQUE" class="seccion inverso">
 				#TITRE
 			</a>
-			<BOUCLE_articles(ARTICLES) {id_rubrique} {id_auteur} {lang} {!par num titre} {pagination 10}>
+			<BOUCLE_articles(ARTICLES) {id_rubrique} {id_auteur} {lang} {!par num titre}{!par date} {pagination 10}>
 				<article>
 					<div class="date-ranges">
 						<BOUCLE_date_debut(EVENEMENTS){id_article}{par date_debut}{0,1}>
@@ -22,25 +22,33 @@
 						<//B_date_debut>
 
 						<BOUCLE_date_fin(EVENEMENTS){id_article}{!par date_fin}{0,1}>
-							[<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]
+							[(#DATE_FIN|>{#ENV{date}}|non)
+							[<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]]
+							[(#DATE_FIN|>{#ENV{date}}|oui)
+							<time class="job-end"><:cv:date_maintenant:></time>]
 						</BOUCLE_date_fin>
 							[(#REM) S'il n'y a pas d'évênements, on cherche dans les traductions - TODO : ne gere pas les doublons, a corriger]
 							<BOUCLE_traductions_fin(ARTICLES){traduction}{exclus}>
 								<BOUCLE_date_fin_trad(EVENEMENTS){id_article}{!par date_fin}{0,1}>
-									[<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]
+									[(#DATE_FIN|>{#ENV{date}}|non)
+									[<time class="job-end" [datetime="(#DATE_FIN|date_iso)"]>[(#DATE_FIN|mois)/](#DATE_FIN|annee)</time>]]
+									[(#DATE_FIN|>{#ENV{date}}|oui)
+									<time class="job-end"><:cv:date_maintenant:></time>]
 								</BOUCLE_date_fin_trad>
 							</BOUCLE_traductions_fin>
 						<//B_date_fin>
 					</div>
 					<hgroup>
-						<BOUCLE_empleador(GIS) {id_article} {0,1}>
+						<B_empleador>
 							<h1 class="job-location">
-								#TITRE - #VILLE, #PAYS
+								<BOUCLE_empleador(GIS) {id_article} {'<br />'}>
+								<span class="#EDIT{titre}">#TITRE</span> - [(#VILLE), ]#PAYS
+								</BOUCLE_empleador>
 							</h1>
-						</BOUCLE_empleador>
-						<h2 class="job-title"><a href="#URL_ARTICLE">#TITRE</a></h2>
+						</B_empleador>
+						<h2 class="job-title #EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h2>
 					</hgroup>
-					<div class="job-details">
+					<div class="job-details #EDIT{introduction}">
 						[(#CHAPO|?{#CHAPO,#INTRODUCTION})]
 					</div>
 				</article>

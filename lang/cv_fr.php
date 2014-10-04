@@ -10,6 +10,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// C
 	'cfg_lbl_test' => 'Test',
 	
+	// D
+	'date_maintenant' => 'Actuellement',
+	
 	// E
 	'empleo_anterior' => 'Expérience précédente',
 	'empleo_siguiente' => 'Expérience suivante',
